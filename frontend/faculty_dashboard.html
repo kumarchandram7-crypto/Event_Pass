@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Console - EventPass</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="brand">
+            <div class="brand-icon">EP</div>
+            <span>EventPass</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="student_dashboard.html" class="nav-link">Student Portal</a>
+            <a href="faculty_dashboard.html" class="nav-link active">Faculty Portal</a>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="container">
+
+        <h2 style="margin-bottom: 0.5rem;">👨🏫 Faculty Gate Control & Live Analytics</h2>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">
+            Verify QR passes, track gate check-ins, and inspect live attendee logs.
+        </p>
+
+        <!-- Stats Overview Widgets -->
+        <section class="grid-4">
+            <div class="stat-card">
+                <div class="stat-label">Total Registered</div>
+                <div class="stat-value" id="statTotal">0</div>
+                <div class="stat-sub">Across all campus events</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Checked-In</div>
+                <div class="stat-value" id="statCheckedIn" style="color: var(--success);">0</div>
+                <div class="stat-sub">Verified at entrance gate</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Not Arrived</div>
+                <div class="stat-value" id="statNotArrived" style="color: var(--warning);">0</div>
+                <div class="stat-sub">Pending entry</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Attendance Rate</div>
+                <div class="stat-value" id="statPercentage" style="color: var(--accent);">0%</div>
+                <div class="stat-sub">Turnout percentage</div>
+            </div>
+        </section>
+
+        <!-- Verification & Scanner Controls -->
+        <div class="grid-2" style="margin-bottom: 2rem;">
+            
+            <!-- Gate Verification Input Card -->
+            <section class="card">
+                <h3 class="card-title">🔍 Gate Check-in & Verification</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
+                    Enter or scan the student's unique <code>EP-XXXXXX</code> ticket pass code.
+                </p>
+
+                <!-- Feedback alert box -->
+                <div id="scanAlertBox" class="alert alert-info" style="display: none;"></div>
+
+                <div class="form-group">
+                    <label class="form-label" for="manualPassInput">Ticket Pass Code / QR Payload</label>
+                    <input type="text" id="manualPassInput" class="form-control" placeholder="e.g. EP-TECHFEST 2026-391024">
+                </div>
+
+                <button id="btnManualVerify" class="btn btn-primary btn-full">
+                    ✅ Verify Pass & Allow Entry
+                </button>
+            </section>
+
+            <!-- Gate Tracking Card -->
+            <section class="card">
+                <h3 class="card-title">🚪 Active Gate Monitor</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
+                    Gate Status: <span class="badge badge-checkedin">Gate 1 - Main Auditorium</span>
+                </p>
+                <div style="background-color: rgba(0,0,0,0.2); padding: 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); font-size: 0.85rem;">
+                    <p style="color: var(--text-muted); margin-bottom: 0.5rem;"><strong>Security Rules Applied:</strong></p>
+                    <ul style="padding-left: 1.25rem; color: var(--text-muted);">
+                        <li>Instant QR payload validation</li>
+                        <li>Automatic duplicate check-in prevention</li>
+                        <li>Real-time timestamp logging</li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Attendee Directory Table -->
+        <section class="card">
+            <div class="card-title">
+                <span>📋 Registered Attendees & Check-in Logs</span>
+                <span class="badge badge-pending">Live Feed</span>
+            </div>
+
+            <!-- Search Filter Input -->
+            <div class="search-box">
+                <input type="text" id="searchInput" class="form-control" placeholder="🔎 Search by student name, roll number, or pass code...">
+            </div>
+
+            <!-- Table -->
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Student Name</th>
+                            <th>Roll Number</th>
+                            <th>Event Name</th>
+                            <th>Entry Status</th>
+                            <th>Check-in Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="attendeeTableBody">
+                        <!-- Populated by faculty.js -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 EventPass Project — Faculty Console</p>
+    </footer>
+
+    <!-- Separate JS File -->
+    <script src="js/faculty.js"></script>
+</body>
+</html>

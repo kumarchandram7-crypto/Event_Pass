@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - EventPass</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- QRCode JS Library CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="brand">
+            <div class="brand-icon">EP</div>
+            <span>EventPass</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="student_dashboard.html" class="nav-link active">Student Portal</a>
+            <a href="faculty_dashboard.html" class="nav-link">Faculty Portal</a>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="container">
+
+        <h2 style="margin-bottom: 0.5rem;">👨🎓 Student Registration & Pass Portal</h2>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">
+            Select an event to register and claim your unique, dynamic QR entry pass.
+        </p>
+
+        <div class="grid-2">
+
+            <!-- Registration Form Card -->
+            <section class="card">
+                <h3 class="card-title">Register for Event</h3>
+                
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label class="form-label" for="studentName">Full Name</label>
+                        <input type="text" id="studentName" class="form-control" placeholder="e.g. Rahul Sharma" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="studentId">Student ID / Roll No</label>
+                        <input type="text" id="studentId" class="form-control" placeholder="e.g. CS2026-042" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="studentEmail">Email Address</label>
+                        <input type="email" id="studentEmail" class="form-control" placeholder="rahul@university.edu" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="eventSelect">Select Campus Event</label>
+                        <select id="eventSelect" class="form-control" required>
+                            <option value="">-- Choose an Event --</option>
+                            <option value="TechFest 2026">🚀 TechFest 2026 (Main Auditorium)</option>
+                            <option value="Hackathon Blitz">💻 Hackathon Blitz (Lab 4)</option>
+                            <option value="Cultural Night">🎭 Cultural Night (Open Air Theatre)</option>
+                            <option value="AI Workshop">🤖 AI & Robotics Workshop (Hall B)</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full">
+                        🎟️ Generate Dynamic QR Pass
+                    </button>
+                </form>
+            </section>
+
+            <!-- Digital QR Pass Display Card -->
+            <section class="card" id="qrPassSection" style="display: none;">
+                <h3 class="card-title">
+                    <span>Digital Entry Pass</span>
+                    <span id="passStatusBadge" class="badge badge-pending">Pending</span>
+                </h3>
+
+                <div class="qr-pass-container">
+                    <h4 id="passEvent" style="font-size: 1.25rem; color: var(--accent);">Event Name</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">Present this QR code at entry gate</p>
+                    
+                    <!-- Dynamic QR Code Container -->
+                    <div class="qr-code-box">
+                        <div id="qrcodeContainer"></div>
+                    </div>
+
+                    <div>
+                        <strong id="passStudentName" style="font-size: 1.1rem; display: block;">Student Name</strong>
+                        <span id="passStudentId" style="font-size: 0.9rem; color: var(--text-muted);">Roll No</span>
+                    </div>
+
+                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--border-color); font-size: 0.85rem; color: var(--text-dim);">
+                        Pass Hash Code: <code id="passCode" style="color: var(--accent);">EP-000000</code>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 EventPass Project — Student Entry Module</p>
+    </footer>
+
+    <!-- Separate JS File -->
+    <script src="js/student.js"></script>
+</body>
+</html>
