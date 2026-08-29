@@ -19,7 +19,7 @@ eventpass/
 │       ├── student.js          # Dynamic QR Code Generator logic
 │       └── faculty.js          # Entry verification & Live Stats logic
 │
-├── backend/                    # Flask backend (Step 3+)
+├
 │
 └── README.md                   # Documentation
 ```
